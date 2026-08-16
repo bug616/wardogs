@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">WARDOGS HUB — Unofficial Player Guide</title>
+  <desc id="description">An original tactical editorial social preview with a sector map, route markers, and control-zone geometry.</desc>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#314039" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" x2="1">
+      <stop offset="0" stop-color="#0b0f0e"/>
+      <stop offset="1" stop-color="#111916"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#fade)"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity=".42"/>
+  <path d="M0 0h1200v12H0z" fill="#d9833b"/>
+  <path d="M0 618h1200v12H0z" fill="#1d2924"/>
+
+  <g transform="translate(86 68)">
+    <path fill="#0b0f0e" stroke="#c6b28a" stroke-width="3" d="M13 0h70l15 15v70l-15 15H15L0 85V15z"/>
+    <path fill="none" stroke="#d9833b" stroke-width="13" stroke-linecap="square" stroke-linejoin="miter" d="m17 28 14 47 19-32 19 32 14-47"/>
+  </g>
+
+  <g font-family="Arial Narrow, Arial, sans-serif">
+    <text x="86" y="248" fill="#f2f4ef" font-size="70" font-weight="800" letter-spacing="2">WARDOGS HUB</text>
+    <text x="90" y="300" fill="#d9833b" font-size="25" font-weight="700" letter-spacing="7">UNOFFICIAL PLAYER GUIDE</text>
+    <path d="M88 334h505" stroke="#c6b28a" stroke-width="2" opacity=".55"/>
+    <text x="90" y="382" fill="#a7aea7" font-size="21" letter-spacing="2">SOURCE-CHECKED PLAYER INTELLIGENCE</text>
+    <text x="90" y="420" fill="#7f8a82" font-size="15" letter-spacing="1.2">TACTICAL GUIDES · RELEASE INFO · STATUS BRIEFINGS</text>
+  </g>
+
+  <g transform="translate(700 65)">
+    <path d="M18 0h382l35 35v460l-35 35H35L0 495V18z" fill="#0d1411" stroke="#3a463f" stroke-width="2"/>
+    <path d="M35 35h365v445H35z" fill="url(#grid)" opacity=".75"/>
+    <path d="M65 82c88 58 102 149 181 184s91 82 146 160" fill="none" stroke="#a7aea7" stroke-width="5" stroke-dasharray="14 12" opacity=".55"/>
+    <path d="M45 392c90-58 127-29 197-78s117-46 183-92" fill="none" stroke="#c6b28a" stroke-width="40" opacity=".08"/>
+    <rect x="164" y="184" width="150" height="150" fill="#d9833b" opacity=".11"/>
+    <rect x="164" y="184" width="150" height="150" fill="none" stroke="#d9833b" stroke-width="3" stroke-dasharray="11 8"/>
+    <circle cx="239" cy="259" r="35" fill="#d9833b" opacity=".2"/>
+    <path d="M239 226v66M206 259h66" stroke="#f2f4ef" stroke-width="3"/>
+    <g fill="#0d1411" stroke="#f2f4ef" stroke-width="3">
+      <circle cx="91" cy="126" r="12"/>
+      <circle cx="350" cy="402" r="12"/>
+    </g>
+    <g fill="#d9833b">
+      <path d="m91 101 9 16H82z"/>
+      <path d="m350 427-9-16h18z"/>
+    </g>
+    <text x="42" y="510" fill="#c6b28a" font-family="monospace" font-size="14" letter-spacing="3">SECTOR / CONTROL ZONE</text>
+  </g>
+
+  <g font-family="monospace" font-size="14" letter-spacing="2">
+    <text x="88" y="562" fill="#c6b28a">WARDOGSFPS.COM</text>
+  </g>
+</svg>
