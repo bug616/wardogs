@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { GameVisual } from "@/components/game-visual";
 import { Icon } from "@/components/icons";
-import { GuideVisual, OperationsMap, TacticalLoopVisual } from "@/components/visuals";
+import { TacticalLoopVisual } from "@/components/visuals";
 import { Eyebrow, FAQSection, StatusPill } from "@/components/ui";
 import { currentFacts } from "@/lib/content";
 import { buildMetadata, siteConfig } from "@/lib/site";
@@ -47,8 +48,8 @@ export default function Home() {
           <p className="hero-source-note">Confirmed facts first. Open questions stay clearly marked.</p>
         </div>
         <div className="home-hero-visual">
-          <OperationsMap/>
-          <div className="hero-visual-caption"><span>TACTICAL MAP FALLBACK</span><small>Original editorial visual — not an in-game screenshot</small></div>
+          <GameVisual id="home-hero-river-squad" className="home-hero-game-visual" priority sizes="(max-width: 640px) calc(100vw - 42px), (max-width: 900px) calc(100vw - 96px), (max-width: 1560px) 52vw, 820px"/>
+          <div className="hero-visual-caption"><span>WARDOGS BATTLEFIELD</span><small>First-party gameplay media</small></div>
         </div>
       </div>
     </section>
@@ -76,7 +77,7 @@ export default function Home() {
       </header>
       <div className="start-here-layout">
         <Link href="/beginner-guide" className="featured-guide">
-          <GuideVisual variant="beginner"/>
+          <GameVisual id="home-beginner-battlefield" className="guide-visual" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 900px) calc(100vw - 48px), 760px"/>
           <div className="featured-guide-copy">
             <span className="card-tag">Field manual · Read this first</span>
             <h3>Beginner guide</h3>
@@ -87,11 +88,11 @@ export default function Home() {
         <div className="supporting-briefings">
           <Link href="/playtest" className="supporting-entry supporting-entry-playtest">
             <div className="supporting-entry-copy"><span className="card-tag">Access</span><h3>Playtest status</h3><p>Dates, eligibility, and the official ways players can enter the next Closed Beta.</p><span className="editorial-link">Check status <Icon name="arrow" size={17}/></span></div>
-            <GuideVisual variant="playtest"/>
+            <GameVisual id="home-playtest-squad-smoke" className="guide-visual" sizes="(max-width: 640px) 116px, (max-width: 1050px) 280px, 300px"/>
           </Link>
           <Link href="/cash-economy" className="supporting-entry supporting-entry-economy">
             <div className="supporting-entry-copy"><span className="card-tag">Resources</span><h3>Cash economy</h3><p>What persists, what Cash buys, and the officially described ways to earn more.</p><span className="editorial-link">Read economy briefing <Icon name="arrow" size={17}/></span></div>
-            <GuideVisual variant="economy"/>
+            <GameVisual id="home-cash-helicopter-transport" className="guide-visual" sizes="(max-width: 640px) 116px, (max-width: 1050px) 280px, 300px"/>
           </Link>
         </div>
       </div>
@@ -104,8 +105,8 @@ export default function Home() {
       </header>
       <div className="mechanics-editorial">
         <figure className="mechanics-visual">
-          <GuideVisual variant="beginner"/>
-          <figcaption><span>FIELD ORIENTATION</span><strong>One wider battlefield. One randomized Control Zone.</strong><small>Original editorial illustration — not an in-game screenshot.</small></figcaption>
+          <GameVisual id="home-control-zone-overview" className="guide-visual" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 900px) 42vw, 520px"/>
+          <figcaption><span>FIELD ORIENTATION</span><strong>One wider battlefield. One randomized Control Zone.</strong><small>Official WARDOGS trailer explainer.</small></figcaption>
         </figure>
         <div className="mechanics-list">
           {mechanics.map((mechanic, index) => <article className="mechanic-row" key={mechanic.title}>

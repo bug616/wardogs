@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GameVisual, type GameVisualId } from "@/components/game-visual";
 import { Icon } from "@/components/icons";
 import { GuideVisual, type GuideVisualVariant } from "@/components/visuals";
 import type { FaqItem } from "@/lib/site";
@@ -32,5 +33,14 @@ export function FAQSection({ items }: { items: FaqItem[] }) {
 }
 
 export function ArticleHero({ eyebrow, title, intro, status, tone = "confirmed" }: { eyebrow: string; title: string; intro: string; status: string; tone?: "confirmed" | "current" | "unknown" }) {
-  return <header className="article-hero"><Eyebrow>{eyebrow}</Eyebrow><StatusPill tone={tone}>{status}</StatusPill><h1>{title}</h1><p>{intro}</p></header>;
+  const visualByTitle: Partial<Record<string, GameVisualId>> = {
+    "WARDOGS Beginner Guide": "beginner-battlefield-overlook",
+    "WARDOGS Playtest & Closed Beta Status": "playtest-three-team-deployment",
+    "WARDOGS Cash Economy Explained": "cash-logistics-deployment",
+  };
+  const visual = visualByTitle[title];
+  return <>
+    <header className="article-hero"><Eyebrow>{eyebrow}</Eyebrow><StatusPill tone={tone}>{status}</StatusPill><h1>{title}</h1><p>{intro}</p></header>
+    {visual && <GameVisual id={visual} className="article-primary-visual" priority/>}
+  </>;
 }

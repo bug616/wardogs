@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "project": "WARDOGS Hub",
+  "policy": {
+    "evidenceImagesMustBeRealAndVerifiable": true,
+    "aiFakeGameplayAllowed": false,
+    "thirdPartyWatermarkRemovalAllowed": false
+  },
+  "logicalSlots": 11,
+  "editorialSlots": 8,
+  "evidenceSlots": 3,
+  "assets": [
+    {
+      "asset": "home-hero-river-squad",
+      "page": "/",
+      "section": "Homepage Hero",
+      "type": "EDITORIAL",
+      "source": "USER",
+      "sourceFile": "3fe03a11-6fb1-450c-bd98-a44d8c27e4d5.png",
+      "originalSourceUrl": "https://www.team17.com/games/wardogs",
+      "sourceNote": "User-supplied image; first-party WARDOGS gallery match traced on Team17.",
+      "generatedByAI": false,
+      "versionSensitive": true,
+      "desktopCrop": "960x540 and 1440x810; AVIF/WebP",
+      "mobileCrop": "430x242 and 860x484; AVIF/WebP",
+      "alt": "WARDOGS squad moving through a river valley toward an industrial battlefield"
+    },
+    {
+      "asset": "home-beginner-battlefield",
+      "page": "/",
+      "section": "Beginner Guide card",
+      "type": "EDITORIAL",
+      "source": "USER",
+      "sourceFile": "1.png",
+      "originalSourceUrl": "https://www.team17.com/news/wardogs-reveal-trailer",
+      "sourceNote": "User-supplied first-party gameplay/trailer frame.",
+      "generatedByAI": false,
+      "versionSensitive": true,
+      "desktopCrop": "960x540 and 1440x810; AVIF/WebP",
+      "mobileCrop": "430x242 and 860x484; AVIF/WebP",
+      "alt": "First-person WARDOGS view across a muddy road toward a contested village"
+    },
+    {
+      "asset": "home-playtest-squad-smoke",
+      "page": "/",
+      "section": "Playtest card",
+      "type": "EDITORIAL",
+      "source": "USER",
+      "sourceFile": "1353b0e6-0617-43a2-9308-2c12d97b1a65.png",
+      "originalSourceUrl": "https://www.team17.com/press-kit-archive",
+      "sourceNote": "User-supplied WARDOGS press/promotional visual; no third-party branding detected.",
+      "generatedByAI": false,
+      "versionSensitive": true,
+      "desktopCrop": "960x540 and 1440x810; AVIF/WebP",
+      "mobileCrop": "430x242 and 860x484; AVIF/WebP",
+      "alt": "WARDOGS infantry squad advancing through smoke during a battlefield deployment"
+    },
+    {
+      "asset": "home-cash-helicopter-transport",
+      "page": "/",
+      "section": "Cash Economy card",
+      "type": "EDITORIAL",
+      "source": "USER",
+      "sourceFile": "df331f97-5d46-43ad-98d2-d2bf42adbe9f.png",
+      "originalSourceUrl": "https://www.team17.com/games/wardogs",
+      "sourceNote": "User-supplied WARDOGS gameplay visual; used as a logistics/transport concept, not Cash UI evidence.",
+      "generatedByAI": false,
+      "versionSensitive": true,
+      "desktopCrop": "960x540 and 1440x810; AVIF/WebP",
+      "mobileCrop": "430x242 and 860x484; AVIF/WebP",
+      "alt": "WARDOGS soldiers boarding a helicopter for battlefield transport"
+    },
+    {
+      "asset": "home-control-zone-overview",
+      "page": "/",
+      "section": "How WARDOGS Works",
+      "type": "EDITORIAL",
+      "source": "USER",
+      "sourceFile": "13344.png",
+      "originalSourceUrl": "https://www.team17.com/news/wardogs-reveal-trailer",
+      "sourceNote": "User-supplied official trailer explainer; not treated as a current in-game map or UI screenshot.",
+      "generatedByAI": false,
+      "versionSensitive": true,
+      "desktopCrop": "960x540 and 1440x810; AVIF/WebP",
+      "mobileCrop": "430x242 and 860x484; AVIF/WebP",
+      "alt": "Official WARDOGS trailer graphic showing teams fighting for the Control Zone"
+    },
+    {
+      "asset": "beginner-battlefield-overlook",
+      "page": "/beginner-guide",
+      "section": "Primary article visual",
+      "type": "EDITORIAL",
+      "source": "USER",
+      "sourceFile": "111.png",
+      "originalSourceUrl": "https://www.team17.com/news/wardogs-reveal-trailer",
+      "sourceNote": "User-supplied first-party gameplay/trailer frame; establishes battlefield scale only.",
+      "generatedByAI": false,
+      "versionSensitive": true,
+      "desktopCrop": "960x540 and 1440x810; AVIF/WebP",
+      "mobileCrop": "430x242 and 860x484; AVIF/WebP",
+      "alt": "First-person WARDOGS view overlooking the wide industrial mountain battlefield"
+    },
+    {
+      "asset": "playtest-three-team-deployment",
+      "page": "/playtest",
+      "section": "Primary article visual",
+      "type": "EDITORIAL",
+      "source": "USER",
+      "sourceFile": "133.png",
+      "originalSourceUrl": "https://steamcommunity.com/app/1867240/allnews/",
+      "sourceNote": "User-supplied official gameplay-trailer frame; supports playtest atmosphere, not access proof.",
+      "generatedByAI": false,
+      "versionSensitive": true,
+      "desktopCrop": "960x540 and 1440x810; AVIF/WebP",
+      "mobileCrop": "430x242 and 860x484; AVIF/WebP",
+      "alt": "WARDOGS gameplay trailer frame showing a three-team infantry deployment"
+    },
+    {
+      "asset": "cash-logistics-deployment",
+      "page": "/cash-economy",
+      "section": "Primary article visual",
+      "type": "EDITORIAL",
+      "source": "USER",
+      "sourceFile": "1122.png",
+      "originalSourceUrl": "https://www.team17.com/news/wardogs-reveal-trailer",
+      "sourceNote": "User-supplied gameplay/trailer frame; illustrates vehicles and logistics, not Cash values or loadout prices.",
+      "generatedByAI": false,
+      "versionSensitive": true,
+      "desktopCrop": "960x540 and 1440x810; AVIF/WebP",
+      "mobileCrop": "430x242 and 860x484; AVIF/WebP",
+      "alt": "WARDOGS logistics area with vehicles and equipment prepared for deployment"
+    }
+  ],
+  "evidenceGaps": [
+    {
+      "page": "/cash-economy",
+      "slot": "Current Cash/loadout UI",
+      "status": "WAIT_FOR_REAL_EVIDENCE",
+      "reason": "No current-version English UI showing balances, prices, or loadout values was verified."
+    },
+    {
+      "page": "/beginner-guide",
+      "slot": "Current in-game Control Zone objective UI",
+      "status": "WAIT_FOR_REAL_EVIDENCE",
+      "reason": "The official trailer graphic is editorial context, not a precise current UI or map evidence image."
+    },
+    {
+      "page": "/playtest",
+      "slot": "Current Steam Playtest access state",
+      "status": "WAIT_FOR_REAL_EVIDENCE",
+      "reason": "Access UI is time-sensitive; the page relies on first-party links and text until a stable current screenshot is captured."
+    }
+  ]
+}
