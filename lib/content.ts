@@ -7,8 +7,8 @@ export const playtestState: {
   end: string;
 } = {
   // Beta-end switch: change this field to "ended" and update lastUpdated.
-  phase: "live",
-  lastUpdated: "2026-08-23",
+  phase: "ended",
+  lastUpdated: "2026-08-24",
   start: "August 21, 2026 at 17:00 UTC",
   end: "August 24, 2026 at 02:00 UTC",
 };
@@ -43,7 +43,7 @@ export const currentFacts = {
       : "August Closed Beta: ended",
     detail: isPlaytestLive
       ? `The official window ends ${playtestState.end}. Pre-orders include guaranteed access; Steam Request Access is limited.`
-      : "The August 21–23 Closed Beta has ended. Steam Early Access begins September 10, 2026.",
+      : "The August Closed Beta ended August 24 at 02:00 UTC. No additional public playtest has been confirmed; Steam Early Access begins September 10, 2026.",
   },
   release: {
     label: "Confirmed",
