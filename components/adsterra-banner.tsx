@@ -43,39 +43,51 @@ export function AdsterraBanner() {
   useEffect(() => {
     const slot = slotRef.current;
 
-    if (!slot || loadedRef.current) return;
+    if (!slot) return;
 
-    loadedRef.current = true;
-    const unit = window.matchMedia("(min-width: 900px)").matches
-      ? desktopUnit
-      : mobileUnit;
-    const adWindow = window as typeof window & {
-      atOptions?: AdsterraOptions;
+    const loadAd = () => {
+      if (loadedRef.current) return;
+
+      loadedRef.current = true;
+      const unit = window.matchMedia("(min-width: 900px)").matches
+        ? desktopUnit
+        : mobileUnit;
+      const adWindow = window as typeof window & {
+        atOptions?: AdsterraOptions;
+      };
+
+      slot.dataset.adsterraUnitId = unit.id;
+      slot.dataset.adsterraSize = `${unit.width}x${unit.height}`;
+      slot.dataset.adsterraScriptStatus = "loading";
+
+      adWindow.atOptions = {
+        key: unit.key,
+        format: "iframe",
+        height: unit.height,
+        width: unit.width,
+        params: {},
+      };
+
+      const script = document.createElement("script");
+      script.src = unit.scriptUrl;
+      script.async = true;
+      script.dataset.adsterraUnitId = unit.id;
+      script.addEventListener("load", () => {
+        slot.dataset.adsterraScriptStatus = "loaded";
+      });
+      script.addEventListener("error", () => {
+        slot.dataset.adsterraScriptStatus = "error";
+      });
+      slot.appendChild(script);
     };
 
-    slot.dataset.adsterraUnitId = unit.id;
-    slot.dataset.adsterraSize = `${unit.width}x${unit.height}`;
-    slot.dataset.adsterraScriptStatus = "loading";
+    if (document.readyState === "complete") {
+      loadAd();
+    } else {
+      window.addEventListener("load", loadAd, { once: true });
+    }
 
-    adWindow.atOptions = {
-      key: unit.key,
-      format: "iframe",
-      height: unit.height,
-      width: unit.width,
-      params: {},
-    };
-
-    const script = document.createElement("script");
-    script.src = unit.scriptUrl;
-    script.async = true;
-    script.dataset.adsterraUnitId = unit.id;
-    script.addEventListener("load", () => {
-      slot.dataset.adsterraScriptStatus = "loaded";
-    });
-    script.addEventListener("error", () => {
-      slot.dataset.adsterraScriptStatus = "error";
-    });
-    slot.appendChild(script);
+    return () => window.removeEventListener("load", loadAd);
   }, []);
 
   return (
