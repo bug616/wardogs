@@ -83,6 +83,12 @@
 @media(min-width:901px) and (max-width:1050px){.hero-visual-caption{right:calc(14vw + 22px)}}
 @media(min-width:561px) and (max-width:900px){.hero-visual-caption{right:calc(7vw + 22px)}}
 
+/* Isolated advertising placement */
+.adsterra-placement{width:100%;margin:0 auto;padding:0 24px 48px;text-align:center}
+.adsterra-label{display:block;width:max-content;margin:0 auto 9px;color:#7f877f;font:700 .58rem/1 monospace;letter-spacing:.14em;text-transform:uppercase}
+.adsterra-slot{position:relative;width:300px;height:250px;max-width:100%;margin:0 auto;overflow:hidden;background:#0d1210;border:1px solid #252e29;contain:layout paint}
+@media(min-width:900px){.adsterra-placement{padding-bottom:56px}.adsterra-slot{width:728px;height:90px}}
+
 /* Console status hub */
 .console-hero{padding-bottom:36px}
 .console-hero h1{font-size:clamp(2.8rem,5vw,4.7rem)}

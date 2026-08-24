@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AdsterraBanner } from "@/components/adsterra-banner";
 import { GameVisual } from "@/components/game-visual";
 import { Icon } from "@/components/icons";
 import { TacticalLoopVisual } from "@/components/visuals";
@@ -102,6 +103,8 @@ export default function Home() {
         </div>
       </div>
     </section>
+
+    <AdsterraBanner />
 
     <section className="home-section mechanics-section" aria-labelledby="mechanics-title">
       <header className="home-section-head">
