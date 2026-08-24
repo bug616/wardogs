@@ -14,7 +14,7 @@ import { buildMetadata, siteConfig } from "@/lib/site";
 export const metadata = buildMetadata("WARDOGS Guide, Release Info & Playtest Status", "Verified WARDOGS playtest, release, price, platform, beginner, and Cash economy information in one unofficial player hub.", "", "website");
 
 const faqs = [
-  { question: "Is the WARDOGS Beta live?", answer: isPlaytestLive ? "Yes. The August Closed Beta is live and its official schedule ends on August 24, 2026 at 02:00 UTC. Pre-orders include guaranteed access, while Steam Request Access is limited and not guaranteed." : "No. The August 21–23 WARDOGS Closed Beta has ended. No additional public playtest has been confirmed in the official sources reviewed." },
+  { question: "Is the WARDOGS Beta live?", answer: isPlaytestLive ? "Yes. The August Closed Beta is live and its official schedule ends on August 24, 2026 at 02:00 UTC. Pre-orders include guaranteed access, while Steam Request Access is limited and not guaranteed." : "No. The August 21–23 WARDOGS Closed Beta ended on August 24, 2026 at 02:00 UTC. No additional public playtest has been confirmed in the official sources reviewed." },
   { question: "When does WARDOGS release?", answer: "WARDOGS is scheduled to launch in Steam Early Access on September 10, 2026." },
   { question: "Is WARDOGS free to play?", answer: "No free-to-play announcement has been made. Paid pre-orders are currently available on Steam with regional pricing." },
   { question: "Is WARDOGS coming to PS5 or Xbox?", answer: "BULKHEAD has named Xbox and PlayStation as part of its plan, but no specific console version, release date, store listing, or crossplay plan has been formally announced." },
@@ -22,7 +22,7 @@ const faqs = [
 ];
 
 const statusItems = [
-  { label: "Playtest", value: currentFacts.playtest.answer, detail: currentFacts.playtest.detail, tone: "current" as const, status: currentFacts.playtest.label },
+  { label: "Playtest", value: currentFacts.playtest.answer, detail: currentFacts.playtest.detail, tone: isPlaytestLive ? "current" as const : "unknown" as const, status: currentFacts.playtest.label },
   { label: "Release", value: currentFacts.release.answer, detail: currentFacts.release.detail, tone: "confirmed" as const, status: "Confirmed" },
   { label: "Price", value: currentFacts.price.answer, detail: currentFacts.price.detail, tone: "current" as const, status: "Paid" },
   { label: "Platforms", value: currentFacts.platforms.answer, detail: currentFacts.platforms.detail, tone: "unknown" as const, status: "Partial" },
@@ -62,7 +62,7 @@ export default function Home() {
     <section className="status-operations" aria-labelledby="current-status-title">
       <div className="status-operations-inner">
         <header className="status-heading">
-          <div><Eyebrow>Live situation board</Eyebrow><h2 id="current-status-title">What is confirmed now</h2></div>
+          <div><Eyebrow>Current situation board</Eyebrow><h2 id="current-status-title">What is confirmed now</h2></div>
           <p>Checked against official first-party pages on {siteConfig.lastChecked}.</p>
         </header>
         <div className="operations-board">
@@ -148,7 +148,7 @@ export default function Home() {
       </header>
       <div className="briefing-layout">
         <div className="briefing-date"><strong>{playtestUpdatedDay}</strong><span>{playtestUpdatedMonth} 2026</span><small>LAST CHECKED</small></div>
-        <article className="briefing-primary"><span className="card-tag">Playtest · Current</span><h3>{isPlaytestLive ? "Closed Beta live until August 24 at 02:00 UTC" : "August Closed Beta has ended"}</h3><p>{isPlaytestLive ? "Steam currently presents pre-purchase as guaranteed access and Request Access as a limited chance. Granted players should look for WARDOGS Playtest in their Steam Library." : "The August 21–23 test is over. No additional public playtest has been confirmed; Steam Early Access begins September 10."}</p><Link href="/playtest">View the full playtest status →</Link></article>
+        <article className="briefing-primary"><span className="card-tag">Playtest · Status</span><h3>{isPlaytestLive ? "Closed Beta live until August 24 at 02:00 UTC" : "August Closed Beta has ended"}</h3><p>{isPlaytestLive ? "Steam currently presents pre-purchase as guaranteed access and Request Access as a limited chance. Granted players should look for WARDOGS Playtest in their Steam Library." : "The August 21–23 test ended August 24 at 02:00 UTC. No additional public playtest has been confirmed; Steam Early Access begins September 10."}</p><Link href="/playtest">View the full playtest status →</Link></article>
         <div className="briefing-log">
           <article><time>CONFIRMED</time><h3>Early Access begins September 10</h3><p>The currently announced launch platform is Steam on PC.</p></article>
           <article><time>CURRENT</time><h3>Paid pre-orders are live</h3><p>Displayed prices vary by Steam region; no free-to-play model has been announced.</p></article>

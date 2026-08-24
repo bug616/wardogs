@@ -318,8 +318,9 @@ export default function ConsolePage() {
         <p>
           WARDOGS launches for Windows PC through Steam Early Access on September 10,
           2026. For the short timeline, read the{" "}
-          <Link href="/release-date">WARDOGS release date</Link>. For current test
-          access, see the <Link href="/playtest">WARDOGS Playtest</Link>. You can
+          <Link href="/release-date">WARDOGS release date</Link>. For the ended
+          August Beta and future test status, see the{" "}
+          <Link href="/playtest">WARDOGS Playtest status</Link>. You can
           also check the current <Link href="/price">WARDOGS price</Link> or start
           with the <Link href="/beginner-guide">WARDOGS beginner guide</Link>.
         </p>
@@ -357,7 +358,7 @@ export default function ConsolePage() {
           {
             title: "Playtest",
             href: "/playtest",
-            text: "Current Steam test access.",
+            text: "Ended August Beta and future test status.",
           },
           {
             title: "Beginner guide",

@@ -22,7 +22,7 @@ const pageTitle = isPlaytestLive
 
 const metaDescription = isPlaytestLive
   ? "The WARDOGS Closed Beta is live until August 24 at 02:00 UTC. Check Steam access, preload, invites and the latest official known issues."
-  : "The August 21–23 WARDOGS Closed Beta has ended. Check the next public playtest status and the September 10 Steam Early Access date.";
+  : "The August WARDOGS Closed Beta has ended. Check the latest playtest status, what happens next, and the confirmed Steam Early Access date.";
 
 const baseMetadata = buildMetadata(pageTitle, metaDescription, "/playtest");
 
@@ -47,9 +47,12 @@ const faq = [
       : "No. The August 21–23, 2026 WARDOGS Closed Beta has ended.",
   },
   {
-    question: "When does the WARDOGS Beta end?",
-    answer:
-      "The official schedule ends on August 24, 2026 at 02:00 UTC. The event is advertised as August 21–23 because the precise UTC closing time crosses into August 24.",
+    question: isPlaytestLive
+      ? "When does the WARDOGS Beta end?"
+      : "When did the WARDOGS Beta end?",
+    answer: isPlaytestLive
+      ? "The official schedule ends on August 24, 2026 at 02:00 UTC. The event is advertised as August 21–23 because the precise UTC closing time crosses into August 24."
+      : "The official schedule ended on August 24, 2026 at 02:00 UTC. The event was advertised as August 21–23 because the precise UTC closing time crossed into August 24.",
   },
   {
     question: "Can I still join the WARDOGS Beta?",
@@ -61,7 +64,7 @@ const faq = [
     question: "How do I get WARDOGS Playtest access?",
     answer: isPlaytestLive
       ? "Pre-purchasing WARDOGS grants guaranteed Closed Beta access according to Steam. Steam Request Access is limited and does not guarantee selection."
-      : "During the August Beta, pre-purchase granted guaranteed access while Steam Request Access offered a limited chance of selection. That test window has ended.",
+      : "The August Closed Beta has ended, so its access routes are no longer active. Steam still offers Request Access for future playtesting interest, but no additional public test or selection is guaranteed.",
   },
   {
     question: "Where do I download WARDOGS Playtest?",
@@ -102,7 +105,7 @@ const faq = [
   {
     question: "Are there WARDOGS Beta rewards or Twitch Drops?",
     answer:
-      "Official WARDOGS posts confirm Twitch Drops during the Beta. The complete reward list, watch time and claim process are not reproduced here without a fully verified first-party rules page.",
+      "Official WARDOGS posts confirmed Twitch Drops during the August Beta. The complete reward list, watch time and claim process are not reproduced here without a fully verified first-party rules page.",
   },
   {
     question: "Does the WARDOGS Beta support controller?",
@@ -154,7 +157,7 @@ export default function PlaytestPage() {
       />
 
       <header className="article-hero playtest-hero">
-        <Eyebrow>{isPlaytestLive ? "Live access briefing" : "Playtest archive"}</Eyebrow>
+        <Eyebrow>{isPlaytestLive ? "Live access briefing" : "Closed Beta ended · Next test status"}</Eyebrow>
         <p className="article-updated">
           Last Updated:{" "}
           <time dateTime={playtestState.lastUpdated}>{playtestUpdatedLabel}</time>
@@ -167,7 +170,7 @@ export default function PlaytestPage() {
         >
           <div className="playtest-status-heading">
             <h2 id="playtest-current-status-title">
-              Current WARDOGS Closed Beta Status
+              Current WARDOGS Playtest Status
             </h2>
             <StatusPill tone={isPlaytestLive ? "current" : "unknown"}>
               {isPlaytestLive ? "Live now" : "Ended"}
@@ -198,12 +201,19 @@ export default function PlaytestPage() {
                 </p>
               </>
             ) : (
-              <p>
-                The August 21–23 WARDOGS Closed Beta has ended. No additional public
-                playtest has been confirmed in the official sources reviewed for this
-                update. WARDOGS is scheduled to enter Steam Early Access on September
-                10, 2026.
-              </p>
+              <>
+                <p>
+                  The August 21–23 WARDOGS Closed Beta has ended. It closed on
+                  August 24, 2026 at 02:00 UTC, so players can no longer enter the
+                  game through that Beta access window.
+                </p>
+                <p>
+                  No additional public WARDOGS playtest has been confirmed in the
+                  official sources reviewed. Steam still offers Request Access for
+                  future testing interest, while the next confirmed milestone is
+                  Steam Early Access on September 10, 2026.
+                </p>
+              </>
             )}
           </DirectAnswer>
 
@@ -215,23 +225,23 @@ export default function PlaytestPage() {
                   <td>{isPlaytestLive ? "Live now" : "Ended"}</td>
                 </tr>
                 <tr>
-                  <th scope="row">Start</th>
+                  <th scope="row">Beta Window</th>
                   <td>
                     <a
                       href={officialSources.schedule}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      August 21, 17:00 UTC
+                      August 21, 2026 at 17:00 UTC – August 24, 2026 at 02:00 UTC
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">End</th>
-                  <td>August 24, 02:00 UTC</td>
+                  <th scope="row">Ended</th>
+                  <td>{isPlaytestLive ? "Scheduled for August 24, 02:00 UTC" : "August 24, 02:00 UTC"}</td>
                 </tr>
                 <tr>
-                  <th scope="row">Pre-order Access</th>
+                  <th scope="row">Current Access</th>
                   <td>
                     {isPlaytestLive ? (
                       <a
@@ -242,35 +252,41 @@ export default function PlaytestPage() {
                         Guaranteed according to Steam
                       </a>
                     ) : (
-                      "Guaranteed during the Beta according to Steam"
+                      "Closed Beta access ended"
                     )}
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">Steam Request Access</th>
+                  <th scope="row">Next Public Playtest</th>
+                  <td>{isPlaytestLive ? "No later public test announced" : "Not announced"}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Steam Early Access</th>
+                  <td>September 10, 2026</td>
+                </tr>
+                <tr>
+                  <th scope="row">Future Test Signup</th>
                   <td>
-                    {isPlaytestLive
-                      ? "Limited, not guaranteed"
-                      : "Beta selection window ended"}
+                    <a
+                      href={siteConfig.official.playtest}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Future testing interest only; access not guaranteed
+                    </a>
                   </td>
                 </tr>
                 <tr>
-                  <th scope="row">Download</th>
-                  <td>
-                    {isPlaytestLive
-                      ? "WARDOGS Playtest in Steam Library"
-                      : "August Playtest window closed"}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Known Issues</th>
+                  <th scope="row">Known Issues Context</th>
                   <td>
                     <a
                       href={officialSources.knownIssues}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Official developer thread available
+                      {isPlaytestLive
+                        ? "Official developer thread available"
+                        : "Historical August Beta developer thread"}
                     </a>
                   </td>
                 </tr>
@@ -293,7 +309,7 @@ export default function PlaytestPage() {
       />
 
       <div className="article-body playtest-article-body">
-        <h2>When Does the WARDOGS Beta End?</h2>
+        <h2>{isPlaytestLive ? "When Does the WARDOGS Beta End?" : "When Did the WARDOGS Beta End?"}</h2>
         <p>
           The WARDOGS Closed Beta {isPlaytestLive ? "is scheduled to end" : "ended"} on{" "}
           <strong>August 24, 2026 at 02:00 UTC</strong>. The official August 21–23
@@ -417,37 +433,36 @@ export default function PlaytestPage() {
           >
             Official Closed Beta Known Issues &amp; Info
           </a>{" "}
-          post confirms the following points:
+          post documented the following points for the August test:
         </p>
         <ul>
-          <li>Crashes are being tracked as part of the testing process.</li>
+          <li>Crashes were tracked as part of the testing process.</li>
           <li>
-            Select only one region in the Server Browser; selecting more than one
-            can prevent servers from appearing.
+            Players were told to select only one Server Browser region because
+            selecting more than one could prevent servers from appearing.
           </li>
           <li>
-            The team is investigating potential voice-chat outages involving its
+            The team investigated potential voice-chat outages involving its
             third-party provider.
           </li>
-          <li>Supporter Pack content is not available during the Closed Beta.</li>
+          <li>Supporter Pack content was not available during the Closed Beta.</li>
         </ul>
         <div className="callout">
           <strong>Player-reported symptoms</strong>
           <p>
-            Players are also reporting queues, Access Denied messages and empty
-            server lists. These reports do not prove that every server is officially
-            down or that every case has one confirmed cause. This status page does
-            not reproduce unverified troubleshooting fixes.
+            During the Beta, players reported queues, Access Denied messages and
+            empty server lists. Those historical reports do not prove that every
+            case had one confirmed cause, and they should not be treated as a
+            current server diagnosis.
           </p>
         </div>
 
         <div className="callout">
           <strong>Controller scope</strong>
           <p>
-            {isPlaytestLive ? "Current" : "Archived"} first-party material uses
-            limited or partial gamepad-support language; it does not guarantee full
-            controller compatibility for every part of {isPlaytestLive ? "this" : "the August"}
-            {" "}Beta build. See the{" "}
+            First-party material for the August Beta used limited or partial
+            gamepad-support language; it did not guarantee full controller
+            compatibility for every part of that build. See the{" "}
             <a
               href={officialSources.controller}
               target="_blank"
@@ -481,7 +496,7 @@ export default function PlaytestPage() {
         <div className="callout">
           <strong>Official Twitch Drops</strong>
           <p>
-            WARDOGS has confirmed{" "}
+            WARDOGS confirmed{" "}
             <a
               href={officialSources.twitchDrops}
               target="_blank"
@@ -489,7 +504,7 @@ export default function PlaytestPage() {
             >
               Twitch Drops during the Beta
             </a>
-            . This page does not invent reward items, watch time or claim steps
+            . This page does not invent past reward items, watch time or claim steps
             without a complete first-party rules page.
           </p>
         </div>
@@ -511,8 +526,8 @@ export default function PlaytestPage() {
           >
             official community signup
           </a>{" "}
-          is for future playtesting interest, not guaranteed access to the current
-          Closed Beta.
+          remains available for future playtesting interest, not access to the ended
+          August Closed Beta or confirmation of another public test.
         </p>
       </div>
 

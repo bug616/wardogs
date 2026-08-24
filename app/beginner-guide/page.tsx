@@ -68,7 +68,7 @@ const faq: BeginnerFaqItem[] = [
   {
     question: "What happens when you die?",
     answer:
-      "Official sources confirm that each life uses a purchased custom loadout. Current Beta players report preparing another life and using a previous-loadout or rebuy option, but the complete death and respawn flow is not yet documented in the reviewed first-party sources.",
+      "Official sources confirm that each life uses a purchased custom loadout. Players in the August Closed Beta reported preparing another life and using a previous-loadout or rebuy option, but the complete death and respawn flow is not yet documented in the reviewed first-party sources.",
   },
   {
     question: "What happens if you run out of Cash?",
@@ -88,12 +88,12 @@ const faq: BeginnerFaqItem[] = [
   {
     question: "How does Spotting work?",
     answer:
-      "Current Beta players use Spotting as a support activity, but its exact visibility, duration, Cash rewards, and XP rules are not fully documented in the reviewed first-party sources.",
+      "Players in the August Closed Beta used Spotting as a support activity, but its exact visibility, duration, Cash rewards, and XP rules are not fully documented in the reviewed first-party sources.",
   },
   {
     question: "Should beginners fly Helicopters?",
     answer:
-      "Helicopters are part of WARDOGS, but current Beta feedback shows a noticeable control-learning curve. Consider learning the controls before taking responsibility for a full transport.",
+      "Helicopters are part of WARDOGS, but August Beta feedback showed a noticeable control-learning curve. Consider learning the controls before taking responsibility for a full transport.",
   },
   {
     question: "Does WARDOGS support controllers?",
@@ -115,7 +115,7 @@ const webPageJsonLd = {
       url: absoluteUrl("/beginner-guide"),
       name: pageTitle,
       description: metaDescription,
-      dateModified: "2026-08-23",
+      dateModified: "2026-08-24",
       breadcrumb: { "@id": `${absoluteUrl("/beginner-guide")}#breadcrumb` },
     },
     {
@@ -193,9 +193,9 @@ export default function BeginnerPage() {
     <article className="article-shell beginner-page">
       <header className="article-hero beginner-hero">
         <Eyebrow>First match field guide</Eyebrow>
-        <StatusPill tone="current">Closed Beta evidence reviewed</StatusPill>
+        <StatusPill tone="current">August Closed Beta evidence reviewed</StatusPill>
         <p className="article-updated">
-          Last Updated: <time dateTime="2026-08-23">August 23, 2026</time>
+          Last Updated: <time dateTime="2026-08-24">August 24, 2026</time>
         </p>
         <h1>WARDOGS Beginner Guide: Your First Match Explained</h1>
         <DirectAnswer>
@@ -217,7 +217,7 @@ export default function BeginnerPage() {
             For your first match, select a team, identify the Control Zone,
             check what your loadout costs, and choose equipment that gives you a
             useful role for that life. Some death, respawn and zero-Cash details
-            seen in the current Beta are not yet fully documented in first-party
+            seen in the August Closed Beta are not yet fully documented in first-party
             sources, so this guide labels those separately.
           </p>
         </DirectAnswer>
@@ -431,12 +431,12 @@ export default function BeginnerPage() {
             </article>
             <article>
               <span className="evidence-label observed">
-                Observed in the Current Beta
+                Observed in the August Beta
               </span>
               <p>
-                Current Beta players and gameplay material show players preparing
+                August Beta players and gameplay material showed players preparing
                 another life after death, with previous-loadout or rebuy behavior
-                visible in the current interface. These are current observations,
+                visible in that interface. These are observations from that build,
                 not promises that the UI or flow will remain unchanged.
               </p>
             </article>
@@ -493,11 +493,11 @@ export default function BeginnerPage() {
           </div>
           <div className="callout">
             <span className="evidence-label observed">
-              Observed in the Current Beta
+              Observed in the August Beta
             </span>
             <strong>Spotting as support</strong>
             <p>
-              Current Beta players use Spotting as a support activity. Its exact
+              August Beta players used Spotting as a support activity. Its exact
               visibility, duration, Cash rewards, and XP rules are not fully
               documented in the reviewed first-party sources, so no payout or
               range is stated here.
@@ -526,10 +526,10 @@ export default function BeginnerPage() {
           </p>
           <div className="callout">
             <span className="evidence-label observed">
-              Current Beta practical advice
+              August Beta practical advice
             </span>
             <p>
-              Helicopter controls are a repeated new-player problem in current
+              Helicopter controls were a repeated new-player problem in August
               Beta discussions and creator guides. Consider learning the controls
               before taking responsibility for a full transport. This is practical
               community-informed advice, not an official rule or required playstyle.
@@ -564,7 +564,7 @@ export default function BeginnerPage() {
             </li>
             <li>
               <strong>Flying an expensive transport before learning the controls.</strong>{" "}
-              This is current Beta practical advice based on repeated player
+              This is August Beta practical advice based on repeated player
               problems, not an official restriction.
             </li>
             <li>
