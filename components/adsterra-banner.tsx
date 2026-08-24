@@ -83,7 +83,7 @@ export function AdsterraBanner() {
 
     let loadTimer: number | undefined;
     const scheduleAd = () => {
-      loadTimer = window.setTimeout(loadAd, 1500);
+      loadTimer = window.setTimeout(loadAd, 5000);
     };
 
     if (document.readyState === "complete") {
