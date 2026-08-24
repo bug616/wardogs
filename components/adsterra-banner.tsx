@@ -81,13 +81,21 @@ export function AdsterraBanner() {
       slot.appendChild(script);
     };
 
+    let loadTimer: number | undefined;
+    const scheduleAd = () => {
+      loadTimer = window.setTimeout(loadAd, 1500);
+    };
+
     if (document.readyState === "complete") {
-      loadAd();
+      scheduleAd();
     } else {
-      window.addEventListener("load", loadAd, { once: true });
+      window.addEventListener("load", scheduleAd, { once: true });
     }
 
-    return () => window.removeEventListener("load", loadAd);
+    return () => {
+      window.removeEventListener("load", scheduleAd);
+      if (loadTimer !== undefined) window.clearTimeout(loadTimer);
+    };
   }, []);
 
   return (
