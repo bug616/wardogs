@@ -39,11 +39,26 @@ const desktopUnit: AdUnit = {
 export function AdsterraBanner() {
   const slotRef = useRef<HTMLDivElement>(null);
   const loadedRef = useRef(false);
+  const scriptRef = useRef<HTMLScriptElement | null>(null);
+  const activeOptionsRef = useRef<AdsterraOptions | null>(null);
 
   useEffect(() => {
     const slot = slotRef.current;
 
     if (!slot) return;
+
+    const adWindow = window as typeof window & {
+      atOptions?: AdsterraOptions;
+    };
+    const clearActiveOptions = () => {
+      const activeOptions = activeOptionsRef.current;
+
+      if (activeOptions && adWindow.atOptions === activeOptions) {
+        delete adWindow.atOptions;
+      }
+
+      activeOptionsRef.current = null;
+    };
 
     const loadAd = () => {
       if (loadedRef.current) return;
@@ -52,15 +67,7 @@ export function AdsterraBanner() {
       const unit = window.matchMedia("(min-width: 900px)").matches
         ? desktopUnit
         : mobileUnit;
-      const adWindow = window as typeof window & {
-        atOptions?: AdsterraOptions;
-      };
-
-      slot.dataset.adsterraUnitId = unit.id;
-      slot.dataset.adsterraSize = `${unit.width}x${unit.height}`;
-      slot.dataset.adsterraScriptStatus = "loading";
-
-      adWindow.atOptions = {
+      const options: AdsterraOptions = {
         key: unit.key,
         format: "iframe",
         height: unit.height,
@@ -68,16 +75,26 @@ export function AdsterraBanner() {
         params: {},
       };
 
+      slot.dataset.adsterraUnitId = unit.id;
+      slot.dataset.adsterraSize = `${unit.width}x${unit.height}`;
+      slot.dataset.adsterraScriptStatus = "loading";
+
+      activeOptionsRef.current = options;
+      adWindow.atOptions = options;
+
       const script = document.createElement("script");
       script.src = unit.scriptUrl;
       script.async = true;
       script.dataset.adsterraUnitId = unit.id;
       script.addEventListener("load", () => {
         slot.dataset.adsterraScriptStatus = "loaded";
+        clearActiveOptions();
       });
       script.addEventListener("error", () => {
         slot.dataset.adsterraScriptStatus = "error";
+        clearActiveOptions();
       });
+      scriptRef.current = script;
       slot.appendChild(script);
     };
 
@@ -95,6 +112,11 @@ export function AdsterraBanner() {
     return () => {
       window.removeEventListener("load", scheduleAd);
       if (loadTimer !== undefined) window.clearTimeout(loadTimer);
+      scriptRef.current?.remove();
+      scriptRef.current = null;
+      slot.replaceChildren();
+      clearActiveOptions();
+      loadedRef.current = false;
     };
   }, []);
 
