@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AdsterraBanner } from "@/components/adsterra-banner";
 import { GameVisual } from "@/components/game-visual";
 import {
   DirectAnswer,
@@ -302,13 +303,16 @@ export default function PlaytestPage() {
         </section>
       </header>
 
-      <GameVisual
-        id="playtest-three-team-deployment"
-        className="article-primary-visual"
-        priority
-      />
+      <div className="playtest-ad-layout">
+        <AdsterraBanner placement="playtest" />
 
-      <div className="article-body playtest-article-body">
+        <GameVisual
+          id="playtest-three-team-deployment"
+          className="article-primary-visual"
+          priority
+        />
+
+        <div className="article-body playtest-article-body">
         <h2>{isPlaytestLive ? "When Does the WARDOGS Beta End?" : "When Did the WARDOGS Beta End?"}</h2>
         <p>
           The WARDOGS Closed Beta {isPlaytestLive ? "is scheduled to end" : "ended"} on{" "}
@@ -529,6 +533,7 @@ export default function PlaytestPage() {
           remains available for future playtesting interest, not access to the ended
           August Closed Beta or confirmation of another public test.
         </p>
+        </div>
       </div>
 
       <SourceList

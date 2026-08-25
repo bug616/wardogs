@@ -18,6 +18,8 @@ type AdUnit = {
   scriptUrl: string;
 };
 
+type AdsterraPlacement = "homepage" | "playtest";
+
 const mobileUnit: AdUnit = {
   id: "30902242",
   key: "b00f4a1dafed788b9db970f6f31d70bf",
@@ -36,7 +38,24 @@ const desktopUnit: AdUnit = {
     "https://www.highrevenueformat.com/c0f91e0a1a1f5fa266f8303658bad41c/invoke.js",
 };
 
-export function AdsterraBanner() {
+function selectAdUnit(placement: AdsterraPlacement) {
+  if (
+    placement === "playtest" &&
+    window.matchMedia("(min-width: 1320px)").matches
+  ) {
+    return mobileUnit;
+  }
+
+  return window.matchMedia("(min-width: 900px)").matches
+    ? desktopUnit
+    : mobileUnit;
+}
+
+export function AdsterraBanner({
+  placement = "homepage",
+}: {
+  placement?: AdsterraPlacement;
+}) {
   const slotRef = useRef<HTMLDivElement>(null);
   const loadedRef = useRef(false);
   const scriptRef = useRef<HTMLScriptElement | null>(null);
@@ -50,6 +69,8 @@ export function AdsterraBanner() {
     const adWindow = window as typeof window & {
       atOptions?: AdsterraOptions;
     };
+    let loadTimer: number | undefined;
+
     const clearActiveOptions = () => {
       const activeOptions = activeOptionsRef.current;
 
@@ -60,13 +81,28 @@ export function AdsterraBanner() {
       activeOptionsRef.current = null;
     };
 
+    const clearLoadedAd = () => {
+      if (loadTimer !== undefined) {
+        window.clearTimeout(loadTimer);
+        loadTimer = undefined;
+      }
+
+      scriptRef.current?.remove();
+      scriptRef.current = null;
+      slot.replaceChildren();
+      clearActiveOptions();
+      loadedRef.current = false;
+      delete slot.dataset.adsterraUnitId;
+      delete slot.dataset.adsterraSize;
+      delete slot.dataset.adsterraScriptStatus;
+    };
+
     const loadAd = () => {
       if (loadedRef.current) return;
 
+      loadTimer = undefined;
       loadedRef.current = true;
-      const unit = window.matchMedia("(min-width: 900px)").matches
-        ? desktopUnit
-        : mobileUnit;
+      const unit = selectAdUnit(placement);
       const options: AdsterraOptions = {
         key: unit.key,
         format: "iframe",
@@ -98,10 +134,33 @@ export function AdsterraBanner() {
       slot.appendChild(script);
     };
 
-    let loadTimer: number | undefined;
     const scheduleAd = () => {
+      if (loadTimer !== undefined) window.clearTimeout(loadTimer);
       loadTimer = window.setTimeout(loadAd, 5000);
     };
+
+    const handleBreakpointChange = () => {
+      if (!loadedRef.current) return;
+
+      const nextUnit = selectAdUnit(placement);
+
+      if (slot.dataset.adsterraUnitId === nextUnit.id) return;
+
+      clearLoadedAd();
+      scheduleAd();
+    };
+
+    const breakpointQueries =
+      placement === "playtest"
+        ? [
+            window.matchMedia("(min-width: 900px)"),
+            window.matchMedia("(min-width: 1320px)"),
+          ]
+        : [];
+
+    breakpointQueries.forEach((query) =>
+      query.addEventListener("change", handleBreakpointChange),
+    );
 
     if (document.readyState === "complete") {
       scheduleAd();
@@ -111,17 +170,21 @@ export function AdsterraBanner() {
 
     return () => {
       window.removeEventListener("load", scheduleAd);
-      if (loadTimer !== undefined) window.clearTimeout(loadTimer);
-      scriptRef.current?.remove();
-      scriptRef.current = null;
-      slot.replaceChildren();
-      clearActiveOptions();
-      loadedRef.current = false;
+      breakpointQueries.forEach((query) =>
+        query.removeEventListener("change", handleBreakpointChange),
+      );
+      clearLoadedAd();
     };
-  }, []);
+  }, [placement]);
 
   return (
-    <aside className="adsterra-placement" aria-label="Advertisement">
+    <aside
+      className={`adsterra-placement ${
+        placement === "playtest" ? "playtest-ad-placement" : ""
+      }`.trim()}
+      data-adsterra-placement={placement}
+      aria-label="Advertisement"
+    >
       <span className="adsterra-label">Advertisement</span>
       <div className="adsterra-slot" ref={slotRef} />
     </aside>
