@@ -124,6 +124,8 @@
 .playtest-hero .direct-answer{max-width:900px;margin:22px 0 18px}
 .playtest-hero .direct-answer p{font-size:1.02rem;margin:.45em 0}
 .playtest-hero a,.playtest-article-body a{color:var(--khaki);text-decoration:underline;text-decoration-color:rgba(198,178,138,.45);text-underline-offset:3px}
+.playtest-ad-layout{display:contents}
+.playtest-ad-placement{padding:38px 0 0}
 .playtest-article-body{padding-top:45px}
 .playtest-article-body h2:first-child{margin-top:0}
 .playtest-guide-cta{display:flex;align-items:center;justify-content:space-between;gap:28px;margin:38px 0;padding:25px;border:1px solid rgba(217,131,59,.45);background:linear-gradient(120deg,rgba(217,131,59,.1),rgba(18,24,22,.96))}
@@ -131,6 +133,7 @@
 .playtest-guide-cta p{font-size:.84rem;margin:.6em 0 0;max-width:390px}
 .playtest-guide-cta .button{flex:0 0 auto;max-width:330px;text-align:center;line-height:1.15;text-decoration:none}
 @media(max-width:700px){.playtest-guide-cta{align-items:stretch;flex-direction:column}.playtest-guide-cta .button{max-width:none;width:100%}}
+@media(min-width:1320px){.playtest-ad-layout{display:grid;grid-template-columns:800px 300px;column-gap:24px;align-items:start;width:1124px}.playtest-ad-layout>.article-primary-visual{grid-column:1/-1;grid-row:1;width:960px;justify-self:start}.playtest-ad-layout>.playtest-article-body{grid-column:1;grid-row:2;width:800px}.playtest-ad-layout>.playtest-ad-placement{grid-column:2;grid-row:2;width:300px;margin:0;padding:45px 0 0}.playtest-ad-layout>.playtest-ad-placement .adsterra-slot{width:300px;height:250px}}
 @media(max-width:560px){.playtest-hero h1{font-size:clamp(2.6rem,12vw,3.2rem)}.playtest-current-status{margin-top:25px}.playtest-status-heading{align-items:flex-start;flex-direction:column;gap:10px}.playtest-status-heading h2{font-size:1.25rem}.playtest-status-table th,.playtest-status-table td{padding:11px 12px}.playtest-status-table th{width:40%;font-size:.68rem}.playtest-status-table td{font-size:.78rem}.playtest-status-note{font-size:.76rem}.playtest-hero .direct-answer{padding:20px;margin-top:24px}.playtest-hero .direct-answer p{font-size:.94rem}.playtest-article-body{padding-top:34px}.playtest-guide-cta{padding:21px}}
 
 /* Beginner first-match guide */
